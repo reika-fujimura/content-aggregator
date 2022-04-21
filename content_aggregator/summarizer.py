@@ -1,3 +1,5 @@
+# summarizer.
+
 import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
@@ -17,6 +19,7 @@ def summarize(text, num):
                 else:
                     word_frequencies[word.text] += 1
     max_frequency=max(word_frequencies.values())
+    
     for word in word_frequencies.keys():
         word_frequencies[word]=word_frequencies[word]/max_frequency
     sentence_tokens= [sent for sent in doc.sents]

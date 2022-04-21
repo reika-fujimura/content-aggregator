@@ -1,3 +1,5 @@
+# aggregator.
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -31,7 +33,7 @@ class Aggregator:
     
     def parse_contents(self) -> None:
         '''
-        Parse titles and urls of 10 articles
+        Parse titles and urls of 6 articles
         '''
         r = requests.get(self.source)
         if r.status_code != 200:
@@ -40,15 +42,13 @@ class Aggregator:
 
         if self.source_name == 'TheVerge':
             self.elements = soup.find_all('a', attrs={"data-analytics-link": "article"})
-            print('theverge', len(self.elements))
-            for i in range(min(len(self.elements), 10)):
+            for i in range(min(len(self.elements), 6)):
                 self.titles.append(self.elements[i].text)
                 self.urls.append(self.elements[i].get('href'))
 
         elif self.source_name == 'TechChurch':
             self.elements = soup.find_all('a', attrs={"class": "post-block__title__link"})
-            print('techchurch', len(self.elements))
-            for i in range(min(len(self.elements), 10)):
+            for i in range(min(len(self.elements), 6)):
                 self.titles.append(self.elements[i].text.replace('\n','').replace('\t',''))
                 self.urls.append(self.elements[i].get('href'))
 
@@ -57,18 +57,16 @@ class Aggregator:
             elements2 = soup.find_all('a', attrs={"class": "SummaryItemHedLink-cgPsOZ cnoEIb summary-item-tracking__hed-link summary-item__hed-link"})
             for i in range(min(3, len(elements1))):
                 self.elements.append(elements1[i])
-            for i in range(min(10, len(elements2))):
+            for i in range(min(3, len(elements2))):
                 self.elements.append(elements2[i])
             self.elements = list(set(self.elements))
-            print('wired', len(self.elements))
             for i in range(len(self.elements)):
                 self.titles.append(self.elements[i].text)
                 self.urls.append('https://www.wired.com' + self.elements[i].get('href'))
 
         elif self.source_name == 'BuzzFeed':
             self.elements = soup.find_all('a', attrs={"class": "js-card__link link-gray"})
-            print('buzzfeed', len(self.elements))
-            for i in range(min(len(self.elements), 10)):
+            for i in range(min(len(self.elements), 6)):
                 self.titles.append(self.elements[i].text)
                 self.urls.append(self.elements[i].get('href'))
 
@@ -87,19 +85,19 @@ class Aggregator:
         soup = BeautifulSoup(r.content, 'html.parser')
         txt = ''
 
-        if self.source == 'TheVerge':
+        if self.source_name == 'TheVerge':
             for e in soup.find_all('p', id=True, attrs={'class':''}):
                 txt += e.text
                 txt += ' '
-        elif self.source == 'TechChurch':
+        elif self.source_name == 'TechChurch':
             for e in soup.find_all('p', attrs={'class':''}):
                 txt += e.text
                 txt += ' '
-        elif self.source == 'WIRED':
+        elif self.source_name == 'WIRED':
             for e in soup.find_all('p',attrs={"class":"paywall"}):
                 txt += e.text
                 txt += ' '
-        elif self.source == 'BuzzFeed':
+        elif self.source_name == 'BuzzFeed':
             for e in soup.find_all('p', attrs={"class": ""}):
                 txt += e.text
                 txt += ' '
