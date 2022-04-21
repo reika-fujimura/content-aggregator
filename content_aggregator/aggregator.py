@@ -22,6 +22,7 @@ class Aggregator:
 
         if source_name not in source_dic.keys():
             raise ValueError('Source Name must be chosen from TheVerge, TechChurch, WIRED, or BuzzFeed.')
+        self.source_name = source_name
         self.source = source_dic[source_name]
         self.elements = []
         self.titles = []
@@ -37,19 +38,21 @@ class Aggregator:
             raise ValueError('The status_code of the request is {}'.format(r.status_code))
         soup = BeautifulSoup(r.content, 'html.parser')
 
-        if self.source == 'TheVerge':
+        if self.source_name == 'TheVerge':
             self.elements = soup.find_all('a', attrs={"data-analytics-link": "article"})
+            print('theverge', len(self.elements))
             for i in range(min(len(self.elements), 10)):
                 self.titles.append(self.elements[i].text)
                 self.urls.append(self.elements[i].get('href'))
 
-        elif self.source == 'TechChurch':
+        elif self.source_name == 'TechChurch':
             self.elements = soup.find_all('a', attrs={"class": "post-block__title__link"})
+            print('techchurch', len(self.elements))
             for i in range(min(len(self.elements), 10)):
                 self.titles.append(self.elements[i].text.replace('\n','').replace('\t',''))
                 self.urls.append(self.elements[i].get('href'))
 
-        elif self.source == 'WIRED':
+        elif self.source_name == 'WIRED':
             elements1 = soup.find_all('a', attrs={"class": "SummaryItemHedLink-cgPsOZ cEGVhT summary-item-tracking__hed-link summary-item__hed-link"})
             elements2 = soup.find_all('a', attrs={"class": "SummaryItemHedLink-cgPsOZ cnoEIb summary-item-tracking__hed-link summary-item__hed-link"})
             for i in range(min(3, len(elements1))):
@@ -57,12 +60,14 @@ class Aggregator:
             for i in range(min(10, len(elements2))):
                 self.elements.append(elements2[i])
             self.elements = list(set(self.elements))
+            print('wired', len(self.elements))
             for i in range(len(self.elements)):
                 self.titles.append(self.elements[i].text)
                 self.urls.append('https://www.wired.com' + self.elements[i].get('href'))
 
-        elif self.source == 'BuzzFeed':
+        elif self.source_name == 'BuzzFeed':
             self.elements = soup.find_all('a', attrs={"class": "js-card__link link-gray"})
+            print('buzzfeed', len(self.elements))
             for i in range(min(len(self.elements), 10)):
                 self.titles.append(self.elements[i].text)
                 self.urls.append(self.elements[i].get('href'))
