@@ -1,1 +1,1 @@
-# content-aggregation
+# content aggregator
