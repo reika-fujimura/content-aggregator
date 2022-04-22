@@ -20,7 +20,7 @@ The news aggregator is deployed as an app using Streamlit.
 
 Run the command below on terminal.
 
-1. Create environment from Pipfile
+1. Create the environment from Pipfile
 
     ```pipenv sync```
 

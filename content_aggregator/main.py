@@ -36,7 +36,7 @@ for i in range(len(sources) // 2, len(sources)):
     c = col2.container()
     agg = Aggregator(sources[i])
     agg.parse_contents()
-    for i in range(len(agg.titles)):
+    for j in range(len(agg.titles)):
         c.write('**'+agg.titles[j] + '** ' + '([link](%s))' % agg.urls[j])
         txt = agg.summarize_text(agg.urls[j],n_sentence = 1)
         c.write(txt)
