@@ -1,0 +1,26 @@
+name: Content Aggregator
+on: 
+  push:
+    branches: 
+      - main
+      - 'releases/**'
+jobs: 
+  my-jobs:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.8
+        uses: actions/setup-python@3
+        with: 
+          python-version: Python 3.8
+      - name: Install Pipenv
+        run: pip install pipenv
+      - name: Main
+        env: repo_token: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+        run: |
+          pipenv install --dev
+          pipenv run content_aggregator/test.py
+          echo "## Content Aggregator Test" >> report.md
+          cat content_aggregator/outputs/test.txt >> report.md
+        run: echo "🍏 This job's status is ${{ job.status }}."
