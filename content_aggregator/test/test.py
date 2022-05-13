@@ -13,7 +13,7 @@ if len(agg.titles) > 1:
     txt += '**'+agg.titles[0] + '** ' + '([link](%s))' % agg.urls[0] + '\n'
     txt += agg.summarize_text(agg.urls[0],n_sentence = 1)
 
-with open('outputs/test.txt', 'w') as f:
+with open('test/outputs.txt', 'w') as f:
     f.write(txt)
 
     

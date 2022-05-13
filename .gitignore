@@ -132,5 +132,4 @@ dmypy.json
 samples/**
 .DS_Store
 **/.DS_Store
-**/test.txt
-secrets.py
+**/output.txt
