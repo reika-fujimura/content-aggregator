@@ -16,11 +16,10 @@ jobs:
       - name: Install Pipenv
         run: pip install pipenv
       - name: Main
-        env: repo_token: ${{ secrets.GITHUB_TOKEN }}
-        run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
         run: |
+          echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
           pipenv install --dev
           pipenv run content_aggregator/test.py
           echo "## Content Aggregator Test" >> report.md
           cat content_aggregator/outputs/test.txt >> report.md
-        run: echo "🍏 This job's status is ${{ job.status }}."
+          echo "🍏 This job's status is ${{ job.status }}."
