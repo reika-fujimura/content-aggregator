@@ -18,7 +18,9 @@ source_dic = {
 
 # header
 st.title('Tech News Aggregator')
-st.image('images/image.jpg')    
+# st.image('images/image.jpg')    
+htp = 'https://raw.githubusercontent.com/reika-fujimura/content-aggregator/main/content_aggregator/images/image.jpg'
+st.image(htp)
 
 # aggregators
 col1, col2 = st.columns(2)
