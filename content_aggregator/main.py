@@ -2,9 +2,11 @@
 # To run the app, type "streamlit run main.py" on terminal.
 
 import streamlit as st
+import spacy
 
 from aggregator import Aggregator
 
+spacy.cli.download("en_core_web_sm")
 
 sources = ['TheVerge', 'TechChurch', 'WIRED', 'BuzzFeed']
 source_dic = {
