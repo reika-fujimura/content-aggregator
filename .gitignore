@@ -130,3 +130,5 @@ dmypy.json
 
 # manual
 samples/**
+.DS_Store
+**/.DS_Store
