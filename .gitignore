@@ -134,4 +134,3 @@ samples/**
 **/.DS_Store
 **/test.txt
 secrets.py
-.github/**
