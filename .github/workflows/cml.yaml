@@ -22,6 +22,5 @@ jobs:
           pipenv run python -m spacy download en_core_web_sm
           pipenv run python content_aggregator/test.py
           echo "## Content Aggregator Test" >> report.md
-          ls
-          # cat content_aggregator/outputs.txt >> report.md
+          cat outputs.txt >> report.md
           echo "🍏 This job's status is ${{ job.status }}."
