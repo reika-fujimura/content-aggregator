@@ -20,7 +20,7 @@ jobs:
           echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
           pipenv install --dev
           pipenv run python -m spacy download en_core_web_sm
-          pipenv run python content_aggregator/test/test.py
+          pipenv run python content_aggregator/test.py
           echo "## Content Aggregator Test" >> report.md
-          cat content_aggregator/outputs/test.txt >> report.md
+          cat content_aggregator/outputs.txt >> report.md
           echo "🍏 This job's status is ${{ job.status }}."
