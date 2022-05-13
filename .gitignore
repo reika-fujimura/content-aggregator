@@ -132,3 +132,4 @@ dmypy.json
 samples/**
 .DS_Store
 **/.DS_Store
+**/outputs.txt

@@ -27,8 +27,10 @@ for i in range(len(sources) // 2):
     agg = Aggregator(sources[i])
     agg.parse_contents()
     for j in range(len(agg.titles)):
-        c.write('**'+agg.titles[j] + '** ' + '([link](%s))' % agg.urls[j])
         txt = agg.summarize_text(agg.urls[j],n_sentence = 1)
+        if not txt:
+            continue
+        c.write('**'+agg.titles[j] + '** ' + '([link](%s))' % agg.urls[j])
         c.write(txt)
 
 for i in range(len(sources) // 2, len(sources)):
@@ -37,17 +39,10 @@ for i in range(len(sources) // 2, len(sources)):
     agg = Aggregator(sources[i])
     agg.parse_contents()
     for j in range(len(agg.titles)):
-        c.write('**'+agg.titles[j] + '** ' + '([link](%s))' % agg.urls[j])
         txt = agg.summarize_text(agg.urls[j],n_sentence = 1)
+        if not txt:
+            continue
+        c.write('**'+agg.titles[j] + '** ' + '([link](%s))' % agg.urls[j])
         c.write(txt)
 
-# aggregate (pattern 2)
-# for i in range(len(sources)):
-#     st.header('['+sources[i]+'](%s)' % source_dic[sources[i]])
-#     c = st.container()
-#     agg = Aggregator(sources[i])
-#     agg.parse_contents()
-#     for j in range(len(agg.titles)):
-#         c.write(agg.titles[j] + ' ' + '([link](%s))' % agg.urls[j])
-#         txt = agg.summarize_text(agg.urls[j])
-#         c.write(txt)
+
