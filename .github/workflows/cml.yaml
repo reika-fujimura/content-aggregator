@@ -24,3 +24,4 @@ jobs:
           echo "## Content Aggregator Test" >> report.md
           cat outputs.txt >> report.md
           echo "🍏 This job's status is ${{ job.status }}."
+          cml-send-comment report.md

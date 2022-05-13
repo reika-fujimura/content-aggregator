@@ -45,13 +45,4 @@ for i in range(len(sources) // 2, len(sources)):
         c.write('**'+agg.titles[j] + '** ' + '([link](%s))' % agg.urls[j])
         c.write(txt)
 
-# aggregate (pattern 2)
-# for i in range(len(sources)):
-#     st.header('['+sources[i]+'](%s)' % source_dic[sources[i]])
-#     c = st.container()
-#     agg = Aggregator(sources[i])
-#     agg.parse_contents()
-#     for j in range(len(agg.titles)):
-#         c.write(agg.titles[j] + ' ' + '([link](%s))' % agg.urls[j])
-#         txt = agg.summarize_text(agg.urls[j])
-#         c.write(txt)
+
