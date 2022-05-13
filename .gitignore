@@ -132,6 +132,6 @@ dmypy.json
 samples/**
 .DS_Store
 **/.DS_Store
-**/outputs
+**/test.txt
 secrets.py
 .github/**
