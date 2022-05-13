@@ -7,9 +7,10 @@ from heapq import nlargest
 
 
 def summarize(text, num):
+    if not text:
+        return 
     nlp = spacy.load('en_core_web_sm')
     doc= nlp(text)
-    tokens=[token.text for token in doc]
     word_frequencies={}
     for word in doc:
         if word.text.lower() not in list(STOP_WORDS):
