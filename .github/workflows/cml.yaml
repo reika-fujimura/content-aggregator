@@ -16,6 +16,7 @@ jobs:
       - name: Install Pipenv
         run: pip install pipenv
       - name: Main
+        env: repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
         run: |
           pipenv install --dev
