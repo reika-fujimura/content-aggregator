@@ -32,7 +32,9 @@ for i in range(len(sources) // 2):
     agg.parse_contents()
     for j in range(len(agg.titles)):
         txt = agg.summarize_text(agg.urls[j],n_sentence = 1)
+        print(i,j,txt)
         if not txt:
+            print(i,j)
             continue
         c.write('**'+agg.titles[j] + '** ' + '([link](%s))' % agg.urls[j])
         c.write(txt)
@@ -44,7 +46,9 @@ for i in range(len(sources) // 2, len(sources)):
     agg.parse_contents()
     for j in range(len(agg.titles)):
         txt = agg.summarize_text(agg.urls[j],n_sentence = 1)
+        print(i,j,txt)
         if not txt:
+            print(i,j)
             continue
         c.write('**'+agg.titles[j] + '** ' + '([link](%s))' % agg.urls[j])
         c.write(txt)
