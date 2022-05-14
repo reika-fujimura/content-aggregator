@@ -6,7 +6,7 @@ import spacy
 
 from aggregator import Aggregator
 
-# spacy.cli.download("en_core_web_sm")
+spacy.cli.download("en_core_web_sm")
 
 sources = ['TheVerge', 'TechChurch', 'WIRED', 'BuzzFeed']
 source_dic = {
