@@ -104,8 +104,6 @@ class Aggregator:
 
         summary = summarize(txt, n_sentence)
         
-        summary = summary.replace('$','\$')
-        
         return summary
 
 

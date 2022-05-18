@@ -35,5 +35,7 @@ def summarize(text, num):
     select_length=num
     summary=nlargest(select_length, sentence_scores,key=sentence_scores.get)
     final_summary=[word.text for word in summary]
-    summary=''.join(final_summary)
+    summary = ''.join(final_summary)
+    summary = summary.replace('$','\$')
+    
     return summary
