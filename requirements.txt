@@ -2,3 +2,4 @@ streamlit
 spacy
 requests
 bs4
+watchdog
