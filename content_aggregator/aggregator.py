@@ -17,13 +17,13 @@ class Aggregator:
 
         source_dic = {
             'TheVerge': 'https://www.theverge.com/tech',
-            'TechChurch': 'https://techcrunch.com/',
+            'TechCrunch': 'https://techcrunch.com/',
             'WIRED': 'https://www.wired.com/',
             'BuzzFeed': 'https://www.buzzfeed.com/tech'
         }
 
         if source_name not in source_dic.keys():
-            raise ValueError('Source Name must be chosen from TheVerge, TechChurch, WIRED, or BuzzFeed.')
+            raise ValueError('Source Name must be chosen from TheVerge, TechCrunch, WIRED, or BuzzFeed.')
         self.source_name = source_name
         self.source = source_dic[source_name]
         self.elements = []
@@ -46,7 +46,7 @@ class Aggregator:
                 self.titles.append(self.elements[i].text)
                 self.urls.append(self.elements[i].get('href'))
 
-        elif self.source_name == 'TechChurch':
+        elif self.source_name == 'TechCrunch':
             self.elements = soup.find_all('a', attrs={"class": "post-block__title__link"})
             for i in range(min(len(self.elements), 6)):
                 self.titles.append(self.elements[i].text.replace('\n','').replace('\t',''))
@@ -89,7 +89,7 @@ class Aggregator:
             for e in soup.find_all('p', id=True, attrs={'class':''}):
                 txt += e.text
                 txt += ' '
-        elif self.source_name == 'TechChurch':
+        elif self.source_name == 'TechCrunch':
             for e in soup.find_all('p', attrs={'class':''}):
                 txt += e.text
                 txt += ' '

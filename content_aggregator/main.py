@@ -11,7 +11,7 @@ spacy.cli.download("en_core_web_sm")
 sources = ['TheVerge', 'TechCrunch', 'WIRED', 'BuzzFeed']
 source_dic = {
     'TheVerge': 'https://www.theverge.com/tech',
-    'TechChurch': 'https://techcrunch.com/',
+    'TechCrunch': 'https://techcrunch.com/',
     'WIRED': 'https://www.wired.com/',
     'BuzzFeed': 'https://www.buzzfeed.com/tech'
 }
