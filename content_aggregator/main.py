@@ -8,7 +8,7 @@ from aggregator import Aggregator
 
 spacy.cli.download("en_core_web_sm")
 
-sources = ['TheVerge', 'TechChurch', 'WIRED', 'BuzzFeed']
+sources = ['TheVerge', 'TechCrunch', 'WIRED', 'BuzzFeed']
 source_dic = {
     'TheVerge': 'https://www.theverge.com/tech',
     'TechChurch': 'https://techcrunch.com/',
